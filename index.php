@@ -40,18 +40,23 @@ include("php/inicial.php");
   </div>
 
 <section id="contenidoPrincipal">
+
+  <!--- CONTENIDO PARA VENTAS ---------------------------------------------------------------------------->
   <article class="venta">
       <h2>Venta</h2>
       <form id="formven" action="php/registroVenta.php" method="post">
         <table>
+          <!--  CAJA PARA CEDULA -->
           <tr>
             <td>Cédula Cliente:</td>
             <td><input type="text" name="cedcli" id="cedcli"></td>
             <td><p  id="nombre"></p></td>
           </tr>
+
+            <!--  DESPLEGABLE PARA PROVEEDOR -->
           <tr>
-            <td>Tipo Producto:</td>
-            <td><select id="producto" name="producto">
+            <td>Proveedor:</td>
+            <td><select id="proveedor" name="proveedor">
               <option value="">-- Elige una Opción --</option>
               <?php
               while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
@@ -62,6 +67,21 @@ include("php/inicial.php");
               <td><p id="compra"></p></td>
           </tr>
 
+          <!--  DESPLEGABLE PARA TIPO PRODUCTO -->
+          <tr>
+            <td>Tipo Producto:</td>
+            <td><select id="tipo_producto" name="tipo_producto">
+              <option value="">-- Elige una Opción --</option>
+              <?php
+              while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
+                echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
+                }
+              ?>
+              </select></td>
+              <td><p id="compra"></p></td>
+          </tr>
+
+          <!--  DESPLEGABLE PARA PRODUCTO -->
           <tr>
             <td>Producto:</td>
             <td><select id="producto" name="producto">
@@ -75,6 +95,7 @@ include("php/inicial.php");
               <td><p id="compra"></p></td>
           </tr>
 
+          <!--  CAJA PARA VALOR $ -->
           <tr>
             <td>Valor:</td>
             <td><input type="text" name="valor" id="valor"></td>
@@ -85,7 +106,7 @@ include("php/inicial.php");
         </table>
       </form>
     </article>
-
+<!----------------------------------------------------------------------------------------------------------------->
 
   <article class="consulta">
     <h2>Credito</h2>
