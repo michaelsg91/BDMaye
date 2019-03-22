@@ -1,213 +1,47 @@
 $(document).ready(function(){
 
 //---------   Procesos ajax    -------------------------------------
-$("#formven #cedcli").keyup(function(){
-    var numdoc=$("#formven #cedcli").val();
-    $.get("php/ajax.php",{num:numdoc}).done(function(data){
-    $("#formven #nombre").html(data);
-    });
+
+
+//-------- Ocultar Articulos ------------------------
+$(".art_ventas").fadeIn(1000);
+$(".art_productos").hide();
+$(".art_clientes").hide();
+$(".art_consultas").hide();
+
+
+$("#li_ventas").click(function(e){
+$(".art_ventas").fadeIn(1000);
+$(".art_productos").hide();
+$(".art_clientes").hide();
+$(".art_consultas").hide();
 });
 
-$("#formcre #cedcli").keyup(function(){
-    var numdoc=$("#formcre #cedcli").val();
-    $.get("php/ajax.php",{num:numdoc}).done(function(data){
-    $("#formcre #nombre").html(data);
-    });
-});
+$("#li_productos").click(function(e){
+  $(".art_ventas").hide();
+  $(".art_productos").fadeIn(1000);
+  $(".art_clientes").hide();
+  $(".art_consultas").hide();
 
-$("#formemp #cedcli").keyup(function(){
-    var numdoc=$("#formemp #cedcli").val();
-    $.get("php/ajax.php",{num:numdoc}).done(function(data){
-    $("#formemp #nombre").html(data);
-    });
-});
-
-$("#formven #producto").change(function(){
-  var articulo=$("#formven #producto").val();
-  $.get("php/ajax.php",{art:articulo}).done(function(data){
-    $("#formven #compra").html(data);
-  });
-});
-
-$("#formcre #producto").change(function(){
-  var articulo=$("#formcre #producto").val();
-  $.get("php/ajax.php",{art:articulo}).done(function(data){
-    $("#formcre #compra").html(data);
-  });
 });
 
 
-$("#formabcre #credito").change(function(){
-  var credito=$("#formabcre #credito").val();
-  $.get("php/ajax.php",{cre:credito}).done(function(data){
-    $("#formabcre #info").html(data);
-  });
-});
-
-$("#formabemp #empeno").change(function(){
-  var empeno=$("#formabemp #empeno").val();
-  $.get("php/ajax.php",{emp:empeno}).done(function(data){
-    $("#formabemp #info").html(data);
-  });
-});
-
-$("#forminv #articulo").change(function(){
-  var articulo=$("#forminv #articulo").val();
-  $.get("php/ajax.php",{artinv:articulo}).done(function(data){
-    $("#forminv #valorcompra").val(data);
-  });
+$("#li_clientes").click(function(e){
+  $(".art_ventas").hide();
+  $(".art_productos").hide();
+  $(".art_clientes").fadeIn(1000);
+  $(".art_consultas").hide();
 });
 
 
-//-------- Ocultar ventanas ------------------------
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").fadeIn(1000);
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").hide();
-
-
-$("#lventa").click(function(e){
-$(".venta").fadeIn(1000);
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").hide();
+$("#li_consultas").click(function(e){
+  $(".art_ventas").hide();
+  $(".art_productos").hide();
+  $(".art_clientes").hide();
+  $(".art_consultas").fadeIn(1000);
 
 });
 
-$("#lventacre").click(function(e){
-$(".venta").hide();
-$(".credito").fadeIn(1000);
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").hide();
-
-});
-
-$("#labonocre").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").fadeIn(1000);
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").hide();
-
-});
-$("#lempeno").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").fadeIn(1000);
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").hide();
-
-});
-$("#laboemp").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").hide();
-$(".abonoempeno").fadeIn(1000);
-$(".usuario").hide();
-
-});
-$("#lsaldos").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").fadeIn(1000);
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").hide();
-
-});
-
-$("#lcliente").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").fadeIn(1000);
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").hide();
-
-});
-
-$("#larticulo").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").fadeIn(1000);
-$(".empeno").hide();
-$(".inventario").hide();
-$(".usuario").hide();
-$(".abonoempeno").hide();
-
-});
-
-$("#linventario").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").fadeIn(1000);
-$(".abonoempeno").hide();
-$(".usuario").hide();
-
-});
-
-$("#lusuario").click(function(e){
-$(".venta").hide();
-$(".credito").hide();
-$(".abonoCredito").hide();
-$(".saldos").hide();
-$(".cliente").hide();
-$(".articulo").hide();
-$(".empeno").hide();
-$(".inventario").hide();
-$(".abonoempeno").hide();
-$(".usuario").fadeIn(1000);
-
-});
 
   var fechaHoy=new Date();
   var mesHoy=fechaHoy.getMonth()+1;

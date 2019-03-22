@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Compra Venta</title>
+<title>Informe De Ventas</title>
 <link href="css/estilo.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/jquery-ui.css">
 
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/jquery.validate.js"></script>
-<script src="js/validate.addtionalMethods.js"></script>
+<script src="js/validate.additionalMethods.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 
 <script src="js/script.js"></script>
@@ -22,19 +22,19 @@ include("php/inicial.php");
 
   ?>
 
-<div id="banner"><img src="css/img/compra.png" alt="Banner Compra Venta" name="logo" width="413" height="74" id="logo"/>
+<div id="banner"><img src="css/img/compra.png" alt="Banner Informe de Ventas" name="logo" width="413" height="74" id="logo"/>
   <ul>
     <li class="separador"><?php echo  date("d-m-Y") ?></li>
-    <li><?php echo $usuario ?></li></ul>
+    <li><?php echo $usuario ?></li>
+  </ul>
 </div>
 
   <div id="princNav">
   <ul>
-    <li><a id="lventa">Venta</a></li>
-	  <li><a id="lventacre">Consultas</a></li>
-    <li><a id="labonocre">Proveedores</a></li>
-	  <li><a id="lempeno">Ingresar Productos</a></li>
-    <li><a id="lcliente">Registrar Cliente</a></li>
+    <li><a id="li_ventas">Ventas</a></li>
+	  <li><a id="li_productos">Productos</a></li>
+    <li><a id="li_clientes">Clientes</a></li>
+    <li><a id="li_consultas">Consultas</a></li>
 	  <li><a href="login.php?salir">Deslogear</a></li>
   </ul>
   </div>
@@ -42,9 +42,9 @@ include("php/inicial.php");
 <section id="contenidoPrincipal">
 
   <!--- CONTENIDO PARA VENTAS ---------------------------------------------------------------------------->
-  <article class="venta">
+  <article class="art_ventas">
       <h2>Venta</h2>
-      <form id="formven" action="php/registroVenta.php" method="post">
+      <form id="form_ventas" action="php/registroVenta.php" method="post">
         <table>
           <!--  CAJA PARA CEDULA -->
           <tr>
@@ -59,12 +59,12 @@ include("php/inicial.php");
             <td><select id="proveedor" name="proveedor">
               <option value="">-- Elige una Opción --</option>
               <?php
-              while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
-                echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
-                }
+            //  while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
+            //    echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
+            //    }
               ?>
               </select></td>
-              <td><p id="compra"></p></td>
+
           </tr>
 
           <!--  DESPLEGABLE PARA TIPO PRODUCTO -->
@@ -73,12 +73,11 @@ include("php/inicial.php");
             <td><select id="tipo_producto" name="tipo_producto">
               <option value="">-- Elige una Opción --</option>
               <?php
-              while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
-                echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
-                }
+            //  while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
+            //    echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
+            //    }
               ?>
               </select></td>
-              <td><p id="compra"></p></td>
           </tr>
 
           <!--  DESPLEGABLE PARA PRODUCTO -->
@@ -87,12 +86,11 @@ include("php/inicial.php");
             <td><select id="producto" name="producto">
               <option value="">-- Elige una Opción --</option>
               <?php
-              while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
-                echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
-                }
+          //    while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
+          //      echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
+          //      }
               ?>
               </select></td>
-              <td><p id="compra"></p></td>
           </tr>
 
           <!--  CAJA PARA VALOR $ -->
@@ -101,129 +99,75 @@ include("php/inicial.php");
             <td><input type="text" name="valor" id="valor"></td>
           </tr>
           <tr>
-              <td colspan="2" align="center"><input type="submit" value="OK" id="enviar" name="enviar"></td>
+              <td colspan="2" align="center"><input type="submit" value="Registrar" id="enviar" name="enviar"></td>
           </tr>
         </table>
       </form>
     </article>
 <!----------------------------------------------------------------------------------------------------------------->
 
-  <article class="consulta">
-    <h2>Credito</h2>
-      <form id="formcre" action="php/" method="post">
+<!--- SECCION PARA PRODUCTOS ---------------------------------------------------------------------------->
+  <article class="art_productos">
+    <h2>Productos</h2>
+      <form id="form_producto" action="php/registroProducto.php" method="post">
         <table>
+          <!--  BOTON PARA LISTAR PRODUCTOS -->
           <tr>
-            <td>Cédula Cliente:</td>
-            <td><input type="text" name="cedcli" id="cedcli"></td>
-            <td><p  id="nombre"></p></td>
+              <td colspan="2" align="right"><input type="submit" value="Listar Productos" onclick = "location='php/listarProductos.php'"/></td>
           </tr>
+
+          <!--  CAJA PARA EL NOMBRE -->
           <tr>
-            <td>Producto:</td>
-            <td><select id="producto" name="producto">
+            <td>Nombre: </td>
+            <td><input type="text" name="nombre_producto" id="nombre_producto"></td>
+          </tr>
+
+          <!--  CAJA PARA LA CANTIDAD -->
+          <tr>
+            <td>Cantidad: </td>
+            <td><input type="number" name="cantidad" id="cantidad"></td>
+          </tr>
+
+          <!--  CAJA PARA EL VALOR DE VENTA -->
+          <tr>
+            <td>Valor Venta: </td>
+            <td><input type="number" name="valor_venta" id="valor_venta"></td>
+          </tr>
+
+          <!--  DESPLEGABLE PARA TIPO PRODUCTO -->
+          <tr>
+            <td>Tipo Producto:</td>
+            <td><select id="tipo_producto" name="tipo_producto">
               <option value="">-- Elige una Opción --</option>
               <?php
 
-              $resultado2=$base->prepare($sqlPro);
-              $resultado2->execute(array());
-
-              while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
-                echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
-                }
               ?>
               </select></td>
-              <td><p id="compra"></p></td>
           </tr>
+
+          <!--  DESPLEGABLE PARA PROVEEDOR -->
           <tr>
-            <td>Fecha Final:</td>
-            <td><input type="text" name="fechafin" id="fechafin"></td>
+            <td>Proveedor:</td>
+            <td><select id="proveedor" name="proveedor">
+              <option value="">-- Elige una Opción --</option>
+              <?php
+
+              ?>
+              </select></td>
           </tr>
-          <tr>
-            <td>Valor:</td>
-            <td><input type="text" name="valor" id="valor"></td>
-          </tr>
-          <tr>
-            <td colspan="2" align="center"><input type="submit" name="enviar" value="OK"></td>
+
+            <td colspan="2" align="center"><input type="submit" name="enviar" value="Registrar"></td>
           </tr>
         </table>
       </form>
     </article>
+<!----------------------------------------------------------------------------------------------------------------->
 
 
-<article class="proveedores">
-
-      <h2>Abono Credito</h2>
-        <form id="formabcre" action="php/registroAbonoCredito.php" method="post">
-          <table>
-            <tr>
-              <td>Crédito:</td>
-              <td><select id="credito" name="credito">
-                <option value="">-- Elige una Opción --</option>
-                <?php
-                while($registro=$resultado3->fetch(PDO::FETCH_ASSOC)){
-                  echo  "<option value='". $registro['idCredito'] ."'>". $registro['idCredito'] ."</option>";
-                  }
-                ?>
-                </select></td>
-                <td><p id="info"></p></td>
-            </tr>
-            <tr>
-              <td>Valor:</td>
-              <td><input type="text" name="valor" id="valor"></td>
-            </tr>
-            <tr>
-              <td colspan="2" align="center"><input type="submit" name="enviar" value="OK"></td>
-            </tr>
-          </table>
-        </form>
-    </article>
-
-
-<article class="saldos">
-      <h2>Saldo día anterior</h2>
-          <table>
-            <tr>
-              <td>Ventas:</td>
-              <td><?php
-                include ("php/consultaSaldos.php");
-              echo $conventa;
-              ?></td>
-            </tr>
-            <tr><td>Abono Crédito:</td>
-            <td><?php
-            echo $concredito;
-
-             ?></td>
-            </tr>
-            <tr>
-              <td>Empeño:</td>
-              <td><?php
-                echo $conempeno;
-               ?></td>
-            </tr>
-            <tr>
-              <td>Abono Empeño:</td>
-              <td><?php
-                echo $conabonoEmpeno;
-               ?></td>
-            </tr>
-            <tr>
-              <td>Total:</td>
-              <td><?php
-                echo $conventa+$concredito-$conempeno+$conabonoEmpeno;
-
-               ?></td>
-            </tr>
-            </table>
-
-    </article>
-
-
-
-
-
-<article class="cliente">
+<!--- SECCION PARA CLIENTES ---------------------------------------------------------------------------->
+<article class="art_clientes">
   <h2>Registro de Cliente</h2>
-    <form id="formcli" action="php/registroCliente.php" method="post">
+    <form id="form_cliente" action="php/registroCliente.php" method="post">
       <table>
         <tr>
           <td>Cédula:</td>
@@ -232,31 +176,37 @@ include("php/inicial.php");
         <tr>
           <td>Nombre:</td>
           <td><input type="text" name="nombre" id="nombre"></td>
-        </tr><tr>
-          <td>Apellido:</td>
-          <td><input type="text" name="apellido" id="apellido"></td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td>Teléfono:</td>
           <td><input type="text" name="telefono" id="telefono"></td>
         </tr>
         <tr>
-          <td>Ciudad:</td>
-          <td>
-            <select id="ciudad" name="ciudad">
-              <option value="">-- Elige una Opción --</option>
-              <?php
-              while($registro=$resultado4->fetch(PDO::FETCH_ASSOC)){
-                echo  "<option value='". $registro['idCiudad'] ."'>". $registro['nombre'] ."</option>";
-                }
-              ?>
-              </select>
-          </td>
+          <td>Dirección:</td>
+          <td><input type="text" name="direccion" id="direccion"></td>
+        </tr>
+        <tr>
+          <td>Municipio:</td>
+          <td><input type="text" name="municipio" id="municipio"></td>
+
         </tr>
         <tr>
           <td colspan="2" align="center"><input type="submit" name="enviar" value="Registrar"></td>
         </tr>
       </table>
     </form>
+
+</article>
+
+
+
+
+
+<article class="art_consultas">
+  <h2>Consultas</h2>
+
+
+
 </article>
 
 
@@ -272,13 +222,13 @@ echo "No ha sido posible agregar el registro. <br>Verifique los datos ingresados
 
 ?>
 
-        </p>
+</p>
 
-
-  </p>
 </article>
-  <p id="pie">2017. Universidad Cooperativa de Colombia</p>
 
 </section>
+
 </body>
+
+
 </html>
