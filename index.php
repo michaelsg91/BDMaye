@@ -1,33 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8">
 <title>Informe De Ventas</title>
-<link href="css/estilo.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/jquery-ui.css">
+<link href="css/estilo.css" rel="stylesheet" type="text/css">
 
 <script src="js/jquery-3.1.1.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/validate.additionalMethods.js"></script>
-<script src="js/jquery-ui.min.js"></script>
 
 <script src="js/script.js"></script>
+<script src="js/ajax.js"></script>
+
+
 
 </head>
 
 <body>
   <?php
 
-include("php/inicial.php");
+include("php/SQLIniciales.php");
 
   ?>
+  <div id="banner"><img src="css/img/compra.png" alt="Banner Compra Venta" name="logo" width="413" height="74" id="logo"/>
+    <ul>
+      <li class="separador"><?php echo  date("d-m-Y") ?></li>
+      <li><?php echo $usuario ?></li></ul>
+  </div>
 
-<div id="banner"><img src="css/img/compra.png" alt="Banner Informe de Ventas" name="logo" width="413" height="74" id="logo"/>
-  <ul>
-    <li class="separador"><?php echo  date("d-m-Y") ?></li>
-    <li><?php echo $usuario ?></li>
-  </ul>
-</div>
 
   <div id="princNav">
   <ul>
@@ -53,29 +51,15 @@ include("php/inicial.php");
             <td><p  id="nombre"></p></td>
           </tr>
 
-            <!--  DESPLEGABLE PARA PROVEEDOR -->
-          <tr>
-            <td>Proveedor:</td>
-            <td><select id="proveedor" name="proveedor">
-              <option value="">-- Elige una Opción --</option>
-              <?php
-            //  while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
-            //    echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
-            //    }
-              ?>
-              </select></td>
-
-          </tr>
-
           <!--  DESPLEGABLE PARA TIPO PRODUCTO -->
           <tr>
             <td>Tipo Producto:</td>
             <td><select id="tipo_producto" name="tipo_producto">
               <option value="">-- Elige una Opción --</option>
               <?php
-            //  while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
-            //    echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
-            //    }
+                while($registro=$resultadoTipoProducto->fetch(PDO::FETCH_ASSOC)){
+                  echo  "<option value='". $registro['idTipoProducto'] ."'>". $registro['nombreTipoProducto'] ."</option>";
+                }
               ?>
               </select></td>
           </tr>
@@ -85,19 +69,28 @@ include("php/inicial.php");
             <td>Producto:</td>
             <td><select id="producto" name="producto">
               <option value="">-- Elige una Opción --</option>
-              <?php
-          //    while($registro=$resultado2->fetch(PDO::FETCH_ASSOC)){
-          //      echo  "<option value='". $registro['idInventario'] ."'>". $registro['nombre'] ."</option>";
-          //      }
-              ?>
-              </select></td>
+
+              </select>
+            </td>
           </tr>
 
-          <!--  CAJA PARA VALOR $ -->
+          <!--  CAJA PARA CANTIDAD $ -->
+          <tr>
+            <td>Cantidad:</td>
+            <td>
+              <select id="cantidad" name="cantidad">
+
+                </select>
+            </td>
+          </tr>
+
+          <!--  CAJA PARA VALOR UNITARIO  Y TOTAL $ -->
           <tr>
             <td>Valor:</td>
             <td><input type="text" name="valor" id="valor"></td>
+            <td><input type="text" name="total" id="total" readonly></td>
           </tr>
+
           <tr>
               <td colspan="2" align="center"><input type="submit" value="Registrar" id="enviar" name="enviar"></td>
           </tr>
@@ -113,13 +106,17 @@ include("php/inicial.php");
         <table>
           <!--  BOTON PARA LISTAR PRODUCTOS -->
           <tr>
-              <td colspan="2" align="right"><input type="submit" value="Listar Productos" onclick = "location='php/listarProductos.php'"/></td>
+              <td colspan="2" align="right">
+                <a href="listarProductos.php">
+                <input type="button" name="button" value="Listar Productos"></button>
+                </a>
+              </td>
           </tr>
 
           <!--  CAJA PARA EL NOMBRE -->
           <tr>
             <td>Nombre: </td>
-            <td><input type="text" name="nombre_producto" id="nombre_producto"></td>
+            <td><input type="text" name="nombre_producto" id="nombre_producto" size="50"></td>
           </tr>
 
           <!--  CAJA PARA LA CANTIDAD -->
@@ -140,7 +137,10 @@ include("php/inicial.php");
             <td><select id="tipo_producto" name="tipo_producto">
               <option value="">-- Elige una Opción --</option>
               <?php
-
+                $resultadoTipoProducto->execute(array());
+                while($registro=$resultadoTipoProducto->fetch(PDO::FETCH_ASSOC)){
+                  echo  "<option value='". $registro['idTipoProducto'] ."'>". $registro['nombreTipoProducto'] ."</option>";
+                }
               ?>
               </select></td>
           </tr>
@@ -151,7 +151,9 @@ include("php/inicial.php");
             <td><select id="proveedor" name="proveedor">
               <option value="">-- Elige una Opción --</option>
               <?php
-
+              while($registro=$resultadoProveedor->fetch(PDO::FETCH_ASSOC)){
+                echo  "<option value='". $registro['idProveedor'] ."'>". $registro['nombreProveedor'] ."</option>";
+              }
               ?>
               </select></td>
           </tr>
@@ -200,15 +202,11 @@ include("php/inicial.php");
 
 
 
-
-
 <article class="art_consultas">
   <h2>Consultas</h2>
 
 
-
 </article>
-
 
 
 <article>
@@ -218,6 +216,8 @@ include("php/inicial.php");
 
 if (isset($_GET["error"])) {
 echo "No ha sido posible agregar el registro. <br>Verifique los datos ingresados, compruebe su conexión a la base de datos o intentelo más tarde.";
+}else if(isset($_GET["ex"])) {
+echo "Registrado correctamente.";
 }
 
 ?>
@@ -225,7 +225,7 @@ echo "No ha sido posible agregar el registro. <br>Verifique los datos ingresados
 </p>
 
 </article>
-
+  <p id="pie">2017. Universidad Cooperativa de Colombia</p>
 </section>
 
 </body>

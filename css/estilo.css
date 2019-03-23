@@ -24,7 +24,12 @@ label.error{
 #banner{
   position: relative;
 }
-
+body{
+  border: 1px solid;
+  position: relative;
+  width: 1300px;
+  margin: auto;
+}
 #banner #logo{
   margin: 30px;
 }
@@ -83,9 +88,10 @@ label.error{
 	background: url(img/bg_nav_h.png);
 }
 
-body{
-  border: 1px solid;
-  position: relative;
-  width: 1300px;
-  margin: auto;
+#pie {
+	padding: 5px;
+	border-top: 1px solid #000;
+	background-color: #9E1010;
+	font-weight: 0.8em;
+	color: #000000;
 }
