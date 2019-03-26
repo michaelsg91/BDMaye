@@ -12,7 +12,7 @@ class personas_modelo{
   public function get_personas(){
 
 
-    $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,cantidad,nombreProveedor,nombreTipoProducto,cantidadVendida FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=tipoProducto.idTipoProducto AND cantidad>cantidadVendida");
+    $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,nombreProveedor,nombreTipoProducto,cantidadVendida FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=tipoProducto.idTipoProducto");
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
        $this->personas[]=$fila;

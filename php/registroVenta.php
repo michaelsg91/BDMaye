@@ -31,7 +31,7 @@ $resultadoCantidad=$base->prepare($sqlCantidad);
 $resultadoCantidad->execute(array());
 
 while($registro=$resultadoCliente->fetch(PDO::FETCH_ASSOC)){
-      $cantidadVendida=$registro['idCliente'];
+      $cantidadVendida=$registro['cantidadVendida'];
 }
 
 $cantidadVendidaNueva=$cantidad+$cantidadVendida;

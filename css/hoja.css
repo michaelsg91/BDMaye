@@ -8,6 +8,7 @@ h1{text-align:center;
 }
 
 table{
+
 }
 
 table td{
@@ -36,4 +37,9 @@ table .primera_fila{
 
 .centrado{
 	text-align:center;
+}
+
+.aside_consultas{
+	float: left;
+	margin-right: 50px;
 }

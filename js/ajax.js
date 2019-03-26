@@ -42,7 +42,7 @@ $("#form_ventas #producto").change(function(){
 
 
 //--- FUNCIONES PARA MULTIPLICAR PRECIO*CANTIDAD ---------------------
-$("#form_ventas #cantidad").change(function(){
+$("#form_ventas #cantidad").keyup(function(){
   var cantidad=$("#form_ventas #cantidad").val();
   var valorUnidad=$("#form_ventas #valor").val();
   var total=cantidad*valorUnidad;

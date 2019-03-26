@@ -4,7 +4,7 @@ try{
 require_once("conexion.php");
 $base=conectar::conexion();
 
-//--- RECIBIENDO CEDULA DEL CLIENTE ------------------------
+//--- RECIBIENDO CEDULA DEL CLIENTE   (VENTAS) ------------------------
 if(isset($_GET['num'])){
 
 $numdoc=$_GET['num'];
@@ -22,7 +22,7 @@ while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
 }
 
 
-//--- RECIBIENDO TIPO PRODUCTO PARA PRODUCTO-PROVEEDOR -----------------------------
+//--- RECIBIENDO TIPO PRODUCTO PARA PRODUCTO-PROVEEDOR    (VENTAS) -----------------------------
 
 if(isset($_GET['tpr'])){
   echo  "<option value='0'>-- Elige una Opción --</option>";
@@ -41,7 +41,7 @@ if(isset($_GET['tpr'])){
 
 }
 
-//--- RECIBIENDO PRODUCTO PARA PRECIO ----------------------------------
+//--- RECIBIENDO PRODUCTO PARA PRECIO   (VENTAS)----------------------------------
 if(isset($_GET['propre'])){
   $producto=$_GET['propre'];
   $sql="SELECT valorVenta FROM producto WHERE idProducto=$producto";
@@ -54,26 +54,6 @@ if(isset($_GET['propre'])){
   }
 
 }
-
-
-//--- RECIBIENDO PRODUCTO PARA CANTIDAD ----------------------------------
-if(isset($_GET['procan'])){
-  $producto=$_GET['procan'];
-  $sql="SELECT (cantidad - cantidadVendida) as restante FROM producto WHERE idProducto=$producto";
-
-  $resultado=$base->prepare($sql);
-  $resultado->execute(array());
-
-  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
-    $cantidad=$registro['restante'];
-  }
-  for($i=1;$i<=$cantidad;$i++){
-    echo  "<option value='" . $i . "'>". $i ."</option>";
-  }
-
-
-}
-
 
 
 }catch(Exception $e){

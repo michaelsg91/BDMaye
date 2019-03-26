@@ -6,7 +6,7 @@
     <link href="css/hoja.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>INVENTARIO</h1>
+    <h1>PRODUCTOS</h1>
 <?php
     require_once("php/procesoListar.php");
 
@@ -17,10 +17,10 @@
       <td class="primera_fila">Id Producto</td>
       <td class="primera_fila">Nombre</td>
       <td class="primera_fila">Valor Venta</td>
-      <td class="primera_fila">Cantidad</td>
       <td class="primera_fila">Proveedor</td>
       <td class="primera_fila">Tipo Producto</td>
       <td class="primera_fila">Cantidad Vendida</td>
+
 
     </tr>
 
@@ -33,10 +33,10 @@
       <td><?php echo $persona["idProducto"]?></td>
       <td><?php echo $persona["nombreProducto"]?></td>
       <td><?php echo $persona["valorVenta"]?></td>
-      <td><?php echo $persona["cantidad"]?></td>
       <td><?php echo $persona["nombreProveedor"]?></td>
       <td><?php echo $persona["nombreTipoProducto"]?></td>
       <td><?php echo $persona["cantidadVendida"]?></td>
+
 
     </tr>
 

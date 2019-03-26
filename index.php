@@ -32,7 +32,7 @@ include("php/SQLIniciales.php");
     <li><a id="li_ventas">Ventas</a></li>
 	  <li><a id="li_productos">Productos</a></li>
     <li><a id="li_clientes">Clientes</a></li>
-    <li><a id="li_consultas">Consultas</a></li>
+    <li><a id="li_consultas" href="consultas.php" target="_blank">Consultas</a></li>
 	  <li><a href="login.php?salir">Deslogear</a></li>
   </ul>
   </div>
@@ -41,7 +41,7 @@ include("php/SQLIniciales.php");
 
   <!--- CONTENIDO PARA VENTAS ---------------------------------------------------------------------------->
   <article class="art_ventas">
-      <h2>Venta</h2>
+      <h2>Registrar Venta</h2>
       <form id="form_ventas" action="php/registroVenta.php" method="post">
         <table>
           <!--  CAJA PARA CEDULA -->
@@ -55,7 +55,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Tipo Producto:</td>
             <td><select id="tipo_producto" name="tipo_producto">
-              <option value="">-- Elige una Opción --</option>
+              <option value="0">-- Elige una Opción --</option>
               <?php
                 while($registro=$resultadoTipoProducto->fetch(PDO::FETCH_ASSOC)){
                   echo  "<option value='". $registro['idTipoProducto'] ."'>". $registro['nombreTipoProducto'] ."</option>";
@@ -68,7 +68,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Producto:</td>
             <td><select id="producto" name="producto">
-              <option value="">-- Elige una Opción --</option>
+              <option value="0">-- Elige una Opción --</option>
 
               </select>
             </td>
@@ -78,9 +78,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Cantidad:</td>
             <td>
-              <select id="cantidad" name="cantidad">
-
-                </select>
+              <input type="number" name="cantidad" id="cantidad" min="1" max="9999">
             </td>
           </tr>
 
@@ -101,13 +99,13 @@ include("php/SQLIniciales.php");
 
 <!--- SECCION PARA PRODUCTOS ---------------------------------------------------------------------------->
   <article class="art_productos">
-    <h2>Productos</h2>
+    <h2>Registrar Producto</h2>
       <form id="form_producto" action="php/registroProducto.php" method="post">
         <table>
           <!--  BOTON PARA LISTAR PRODUCTOS -->
           <tr>
               <td colspan="2" align="right">
-                <a href="listarProductos.php">
+                <a href="listarProductos.php" target="_blank">
                 <input type="button" name="button" value="Listar Productos"></button>
                 </a>
               </td>
@@ -117,12 +115,6 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Nombre: </td>
             <td><input type="text" name="nombre_producto" id="nombre_producto" size="50"></td>
-          </tr>
-
-          <!--  CAJA PARA LA CANTIDAD -->
-          <tr>
-            <td>Cantidad: </td>
-            <td><input type="number" name="cantidad" id="cantidad"></td>
           </tr>
 
           <!--  CAJA PARA EL VALOR DE VENTA -->
@@ -135,7 +127,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Tipo Producto:</td>
             <td><select id="tipo_producto" name="tipo_producto">
-              <option value="">-- Elige una Opción --</option>
+              <option value="0">-- Elige una Opción --</option>
               <?php
                 $resultadoTipoProducto->execute(array());
                 while($registro=$resultadoTipoProducto->fetch(PDO::FETCH_ASSOC)){
@@ -149,7 +141,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Proveedor:</td>
             <td><select id="proveedor" name="proveedor">
-              <option value="">-- Elige una Opción --</option>
+              <option value="0">-- Elige una Opción --</option>
               <?php
               while($registro=$resultadoProveedor->fetch(PDO::FETCH_ASSOC)){
                 echo  "<option value='". $registro['idProveedor'] ."'>". $registro['nombreProveedor'] ."</option>";
@@ -168,7 +160,7 @@ include("php/SQLIniciales.php");
 
 <!--- SECCION PARA CLIENTES ---------------------------------------------------------------------------->
 <article class="art_clientes">
-  <h2>Registro de Cliente</h2>
+  <h2>Registrar Cliente</h2>
     <form id="form_cliente" action="php/registroCliente.php" method="post">
       <table>
         <tr>
@@ -197,14 +189,6 @@ include("php/SQLIniciales.php");
         </tr>
       </table>
     </form>
-
-</article>
-
-
-
-<article class="art_consultas">
-  <h2>Consultas</h2>
-
 
 </article>
 
