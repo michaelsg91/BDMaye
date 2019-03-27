@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-//---------   Procesos ajax    -------------------------------------
 
 //--- FUNCION PARA ENCONTRAR CLIENTE -------------------------------
 $("#form_ventas #cedcli").keyup(function(){
@@ -29,15 +28,8 @@ $("#form_ventas #producto").change(function(){
   $.get("php/ajax.php",{propre:producto}).done(function(data){
     $("#form_ventas #valor").val(data);
     $("#form_ventas #total").val(data);
-
   });
-});
 
-$("#form_ventas #producto").change(function(){
-  var producto=$("#form_ventas #producto").val();
-  $.get("php/ajax.php",{procan:producto}).done(function(data){
-    $("#form_ventas #cantidad").html(data);
-  });
 });
 
 
@@ -54,6 +46,25 @@ $("#form_ventas #valor").keyup(function(){
   var valorUnidad=$("#form_ventas #valor").val();
   var total=cantidad*valorUnidad;
   $("#form_ventas #total").val(total);
+});
+
+
+//--- FUNCIONES PARA BUSCAR PRODUCTO ------------------------------
+$("#form_actualizar #buscar").click(function(){
+  var id=$("#form_actualizar #id").val();
+  $.get("php/ajax.php",{idproveedor:id}).done(function(data){
+    $("#form_actualizar #proveedor").val(data);
+  });
+  $.get("php/ajax.php",{idtipoprodcuto:id}).done(function(data){
+    $("#form_actualizar #tipo_producto").val(data);
+  });
+  $.get("php/ajax.php",{idproducto:id}).done(function(data){
+    $("#form_actualizar #producto").val(data);
+  });
+  $.get("php/ajax.php",{idvalor:id}).done(function(data){
+    $("#form_actualizar #valor_venta").val(data);
+  });
+
 });
 
 

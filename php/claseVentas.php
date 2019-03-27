@@ -13,7 +13,9 @@ class ventas{
 
   public function get_ventas(){
 
-    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor");
+    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta
+      FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor ORDER BY ventas.idVenta DESC");
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
        $this->personas[]=$fila;
@@ -25,7 +27,10 @@ class ventas{
 
   public function get_soloProducto($producto,$fechaInicial,$fechaFinal){
 
-    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND ventas.idProducto=$producto AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "'" );
+    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta
+      FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND ventas.idProducto=$producto
+      AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
      $this->personas[]=$fila;
@@ -37,7 +42,10 @@ class ventas{
 
   public function get_soloTipoProducto($tipoProducto,$fechaInicial,$fechaFinal){
 
-    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=$tipoProducto AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "'" );
+    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta
+      FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=$tipoProducto
+      AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
        $this->personas[]=$fila;
@@ -49,7 +57,10 @@ class ventas{
 
   public function get_soloProveedor($proveedor,$fechaInicial,$fechaFinal){
 
-    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND producto.idProveedor=$proveedor AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "'" );
+    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta
+      FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND producto.idProveedor=$proveedor
+      AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
        $this->personas[]=$fila;
@@ -61,7 +72,10 @@ class ventas{
 
   public function get_soloCliente($cliente,$fechaInicial,$fechaFinal){
 
-    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND ventas.idCliente=$cliente AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "'" );
+    $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta
+      FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor AND ventas.idCliente=$cliente
+      AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
     $this->personas[]=$fila;
@@ -69,6 +83,21 @@ class ventas{
     return $this->personas;
 
   }
+
+
+    public function get_soloFecha($fechaInicial,$fechaFinal){
+
+      $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta
+        FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto
+        AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor
+        AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
+
+      while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
+       $this->personas[]=$fila;
+      }
+      return $this->personas;
+
+    }
 
 }
 

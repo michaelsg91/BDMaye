@@ -55,6 +55,61 @@ if(isset($_GET['propre'])){
 
 }
 
+//--- SECCION ACTUALIZAR -----------------------------------------------------------------------------------
+
+//--- RECIBIENDO ID PARA IDPROVEEDOR (ACTUALIZAR) --------------------------
+if(isset($_GET["idproveedor"])){
+  $producto=$_GET["idproveedor"];
+  $sql="SELECT idProveedor FROM producto WHERE idProducto=$producto";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["idProveedor"];
+  }
+}
+
+//--- RECIBIENDO ID PARA IDTIPOPRODUCTO (ACTUALIZAR) --------------------------
+if(isset($_GET["idtipoprodcuto"])){
+  $producto=$_GET["idtipoprodcuto"];
+  $sql="SELECT idTipoProducto FROM producto WHERE idProducto=$producto";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["idTipoProducto"];
+  }
+}
+
+//--- RECIBIENDO ID PARA NOMBRE PRODUCTO (ACTUALIZAR) --------------------------
+if(isset($_GET["idproducto"])){
+  $producto=$_GET["idproducto"];
+  $sql="SELECT nombreProducto FROM producto WHERE idProducto=$producto";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["nombreProducto"];
+  }
+}
+
+//--- RECIBIENDO ID PARA VALOR VENTA (ACTUALIZAR) --------------------------
+if(isset($_GET["idvalor"])){
+  $producto=$_GET["idvalor"];
+  $sql="SELECT valorVenta FROM producto WHERE idProducto=$producto";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["valorVenta"];
+  }
+}
+
+
 
 }catch(Exception $e){
   die('Error'. $e->getMessage());

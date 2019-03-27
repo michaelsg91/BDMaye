@@ -4,7 +4,7 @@ $cedcli=$_POST["cedcli"];
 $producto=$_POST['producto'];
 $cantidad=$_POST['cantidad'];
 $total=$_POST["total"];
-$fecha=date("Y-m-d");
+$fecha=$_POST["fecha_venta"];
 
 try{
 require_once("conexion.php");

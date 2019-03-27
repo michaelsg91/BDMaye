@@ -29,10 +29,11 @@ include("php/SQLIniciales.php");
 
   <div id="princNav">
   <ul>
-    <li><a id="li_ventas">Ventas</a></li>
-	  <li><a id="li_productos">Productos</a></li>
-    <li><a id="li_clientes">Clientes</a></li>
-    <li><a id="li_consultas" href="consultas.php" target="_blank">Consultas</a></li>
+    <li><a id="li_ventas">Ingresar Venta</a></li>
+	  <li><a id="li_productos">Ingresar Producto</a></li>
+    <li><a id="li_clientes">Ingresar Cliente</a></li>
+    <li><a id="li_actualizar">Actualizar Producto</a></li>
+    <li><a id="li_consultas" href="consultas.php" target="_blank">Consultar Ventas</a></li>
 	  <li><a href="login.php?salir">Deslogear</a></li>
   </ul>
   </div>
@@ -87,6 +88,10 @@ include("php/SQLIniciales.php");
             <td>Valor:</td>
             <td><input type="text" name="valor" id="valor"></td>
             <td><input type="text" name="total" id="total" readonly></td>
+          </tr>
+          <tr>
+            <td>Fecha:</td>
+            <td><input type="date" name="fecha_venta" id="fecha_venta"></td>
           </tr>
 
           <tr>
@@ -191,7 +196,73 @@ include("php/SQLIniciales.php");
     </form>
 
 </article>
+<!---------------------------------------------------------------------------------------------------->
 
+<!--- CONTENIDO PARA ACTUALIZAR ---------------------------------------------------------------------------->
+<article class="art_actualizar">
+    <h2>ACTUALIZAR PRODUCTO</h2>
+    <form id="form_actualizar" action="php/actualizarProducto.php" method="post">
+      <table>
+
+        <tr>
+          <td>ID: </td>
+          <td><input type="number" name="id" id="id"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="button" id="buscar" name="buscar" value="Buscar"></td>
+
+        </tr>
+
+        <!--  DESPLEGABLE PARA TIPO PROVEEDOR -->
+        <tr>
+          <td>Proveedor:</td>
+          <td><select id="proveedor" name="proveedor">
+            <?php
+              $resultadoProveedor->execute(array());
+              while($registro=$resultadoProveedor->fetch(PDO::FETCH_ASSOC)){
+                echo  "<option value='". $registro['idProveedor'] ."'>". $registro['nombreProveedor'] ."</option>";
+              }
+            ?>
+            </select></td>
+        </tr>
+
+        <!--  DESPLEGABLE PARA TIPO PRODUCTO -->
+        <tr>
+          <td>Tipo Producto:</td>
+          <td><select id="tipo_producto" name="tipo_producto">
+            <?php
+              $resultadoTipoProducto->execute(array());
+              while($registro=$resultadoTipoProducto->fetch(PDO::FETCH_ASSOC)){
+                echo  "<option value='". $registro['idTipoProducto'] ."'>". $registro['nombreTipoProducto'] ."</option>";
+              }
+            ?>
+            </select></td>
+        </tr>
+
+        <!--  CAJA PARA PRODUCTO -->
+        <tr>
+          <td>Producto:</td>
+          <td><input type="text" id="producto" name="producto" size="50">
+          </td>
+        </tr>
+
+        <!--  CAJA PARA VALOR $ -->
+        <tr>
+          <td>Valor:</td>
+          <td>
+            <input type="number" name="valor_venta" id="valor_venta">
+          </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Actualizar" id="enviar" name="enviar"></td>
+        </tr>
+      </table>
+    </form>
+  </article>
+<!----------------------------------------------------------------------------------------------------------------->
 
 <article>
 <p align="center" id="aviso">
@@ -202,6 +273,10 @@ if (isset($_GET["error"])) {
 echo "No ha sido posible agregar el registro. <br>Verifique los datos ingresados, compruebe su conexión a la base de datos o intentelo más tarde.";
 }else if(isset($_GET["ex"])) {
 echo "Registrado correctamente.";
+}else if(isset($_GET["exact"])){
+  echo "Actualizado correctamente.";
+}else if (isset($_GET["erroract"])) {
+echo "No ha sido posible actualizar el registro. <br>Verifique los datos ingresados, compruebe su conexión a la base de datos o intentelo más tarde.";
 }
 
 ?>

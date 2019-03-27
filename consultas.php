@@ -17,10 +17,12 @@
     require_once("php/SQLInicialesConsultas.php");
     require_once("php/claseVentas.php");
 
+    if(isset($_POST["fecha_inicial"])){
+
     try{
+    //  error_reporting(E_ALL ^ E_NOTICE);//--- EVITA LOS MENSAJES DE ERROR
 
-
-      $fechaInical=$_POST["fecha_inicial"];
+      $fechaInicial=$_POST["fecha_inicial"];
       $fechaFinal=$_POST["fecha_final"];
       $producto=$_POST["producto"];
       $tipoProducto=$_POST["tipo_producto"];
@@ -29,28 +31,28 @@
 
       if($producto!=0){
         $soloProducto=new ventas();
-        $matriz_personas=$soloProducto->get_soloProducto($producto,$fechaInical,$fechaFinal);
+        $matriz_personas=$soloProducto->get_soloProducto($producto,$fechaInicial,$fechaFinal);
 
       }else if($tipoProducto!=0){
         $soloTipoProducto=new ventas();
-        $matriz_personas=$soloTipoProducto->get_soloTipoProducto($tipoProducto,$fechaInical,$fechaFinal);
+        $matriz_personas=$soloTipoProducto->get_soloTipoProducto($tipoProducto,$fechaInicial,$fechaFinal);
 
       }else if($proveedor!=0){
         $soloProveedor=new ventas();
-        $matriz_personas=$soloProveedor->get_soloProveedor($proveedor,$fechaInical,$fechaFinal);
+        $matriz_personas=$soloProveedor->get_soloProveedor($proveedor,$fechaInicial,$fechaFinal);
       }else if($cliente!=0){
         $soloCliente=new ventas();
-        $matriz_personas=$soloCliente->get_soloCliente($cliente,$fechaInical,$fechaFinal);
+        $matriz_personas=$soloCliente->get_soloCliente($cliente,$fechaInicial,$fechaFinal);
+      }else if($fechaInicial!="" && $fechaFinal!=""){
+        $soloFecha=new ventas();
+        $matriz_personas=$soloFecha->get_soloFecha($fechaInicial,$fechaFinal);
+
       }else{
 
           $todasVentas=new ventas();
-
           $matriz_personas=$todasVentas->get_ventas();
 
       }
-
-
-
 
 
     }catch(Exception $e){
@@ -58,6 +60,11 @@
     }
 
 
+}else{
+  $todasVentas=new ventas();
+  $matriz_personas=$todasVentas->get_ventas();
+
+}
 
 
 
@@ -70,11 +77,11 @@
 <table>
   <tr>
     <td>Fecha Inicial:</td>
-    <td><input type="date" name="fecha_inicial" id="fecha_inicial"></td>
+    <td><input type="date" name="fecha_inicial" id="fecha_inicial" value="0"></td>
   </tr>
   <tr>
     <td>Fecha Final:</td>
-    <td><input type="date" name="fecha_final" id="fecha_final"></td>
+    <td><input type="date" name="fecha_final" id="fecha_final" value="0"></td>
   </tr>
 
   <!--  DESPLEGABLE PARA PRODUCTO -->
@@ -159,6 +166,7 @@
     </tr>
 
 		<?php
+    $sumaVentas=0;
     foreach ($matriz_personas as $persona):
     	?>
 
@@ -177,10 +185,26 @@
     </tr>
 
 <?php
+
+$sumaVentas=$sumaVentas+$persona["valorVenta"];
+
 endforeach;
 ?>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td class="primera_fila">Total:</td>
+  <td>
+<?php  echo $sumaVentas; ?>
 
+  </td>
+</tr>
   </table>
+
 </section>
 
 
