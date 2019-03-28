@@ -29,19 +29,17 @@ body{
   width: 1350px;
   margin: auto;
 }
-#banner #logo{
-  margin: 30px;
-}
+
 #banner ul{
   position: absolute;
-  right: 60px;
+  right: 10px;
   bottom: 5px;
 }
 
 
 #banner li {
 	display: inline;
-	margin-left: 10px;
+	margin-left: 5px;
 
 }
 #banner li a {
