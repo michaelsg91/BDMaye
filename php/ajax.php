@@ -9,7 +9,7 @@ if(isset($_GET['num'])){
 
 $numdoc=$_GET['num'];
 
-if($numdoc!=null){
+try{
 $sql="SELECT * FROM cliente WHERE cedula=$numdoc";
 $resultado=$base->prepare($sql);
 $resultado->execute(array());
@@ -17,6 +17,8 @@ $resultado->execute(array());
 while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
   echo $registro['nombreCliente'];
 }
+}catch(Exception $e){
+  echo "Formato no valido";
 }
 
 }

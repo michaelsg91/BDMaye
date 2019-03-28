@@ -9,10 +9,51 @@ class Productos{
     $this->productos=array();
   }
 
-  public function get_personas(){
+  public function get_productos(){
+
+    $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,nombreProveedor,nombreTipoProducto,cantidadVendida
+      FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor
+      AND producto.idTipoProducto=tipoProducto.idTipoProducto");
+
+    while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
+       $this->productos[]=$fila;
+    }
+    return $this->productos;
+
+  }
+
+  public function get_solo_nombre($nombreProducto){
+
+    $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,nombreProveedor,nombreTipoProducto,cantidadVendida
+      FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND nombreProducto='" . $nombreProducto . "'");
+
+    while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
+       $this->productos[]=$fila;
+    }
+    return $this->productos;
+
+  }
+
+  public function get_solo_proveedor($idProveedor){
+
+    $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,nombreProveedor,nombreTipoProducto,cantidadVendida
+      FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND producto.idProveedor=$idProveedor");
+
+    while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
+       $this->productos[]=$fila;
+    }
+    return $this->productos;
+
+  }
+
+  public function get_solo_tipo_producto($idTipoProducto){
 
 
-    $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,nombreProveedor,nombreTipoProducto,cantidadVendida FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=tipoProducto.idTipoProducto");
+    $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,nombreProveedor,nombreTipoProducto,cantidadVendida
+      FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=tipoProducto.idTipoProducto
+      AND producto.idTipoProducto=$idTipoProducto");
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
        $this->productos[]=$fila;
@@ -23,9 +64,6 @@ class Productos{
 
 }
 
-$producto=new Productos();
-
-$matriz_productos=$producto->get_personas();
 
 
 

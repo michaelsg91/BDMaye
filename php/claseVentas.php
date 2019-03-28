@@ -15,7 +15,7 @@ class ventas{
 
     $consulta=$this->db->query("SELECT idVenta,nombreProducto,nombreTipoProducto,nombreProveedor,nombreCliente,fechaVenta,cantidad,ventas.valorVenta
       FROM ventas,producto,proveedor,tipoProducto,cliente WHERE ventas.idProducto=producto.idProducto AND producto.idTipoProducto=tipoProducto.idTipoProducto
-      AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor ORDER BY ventas.idVenta DESC");
+      AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor ORDER BY ventas.idVenta DESC LIMIT 0,20");
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
        $this->ventas[]=$fila;

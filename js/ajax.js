@@ -17,7 +17,7 @@ $("#form_ventas #tipo_producto").change(function(){
   });
   $("#form_ventas #total").val("");
   $("#form_ventas #valor").val("");
-  $("#form_ventas #cantidad").empty();
+  $("#form_ventas #cantidad").val(null);
 
 
 });

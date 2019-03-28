@@ -20,7 +20,7 @@
     if(isset($_POST["fecha_inicial"])){
 
     try{
-    //  error_reporting(E_ALL ^ E_NOTICE);//--- EVITA LOS MENSAJES DE ERROR
+      error_reporting(E_ALL ^ E_NOTICE);//--- EVITA LOS MENSAJES DE ERROR
 
       $fechaInicial=$_POST["fecha_inicial"];
       $fechaFinal=$_POST["fecha_final"];

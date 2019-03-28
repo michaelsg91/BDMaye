@@ -61,7 +61,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Tipo Producto:</td>
             <td><select id="tipo_producto" name="tipo_producto">
-              <option value="0">-- Elige una Opción --</option>
+              <option value="">-- Elige una Opción --</option>
               <?php
                 while($registro=$resultadoTipoProducto->fetch(PDO::FETCH_ASSOC)){
                   echo  "<option value='". $registro['idTipoProducto'] ."'>". $registro['nombreTipoProducto'] ."</option>";
@@ -74,7 +74,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Producto:</td>
             <td><select id="producto" name="producto">
-              <option value="0">-- Elige una Opción --</option>
+              <option value="">-- Elige una Opción --</option>
 
               </select>
             </td>
@@ -128,7 +128,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Tipo Producto:</td>
             <td><select id="tipo_producto" name="tipo_producto">
-              <option value="0">-- Elige una Opción --</option>
+              <option value="">-- Elige una Opción --</option>
               <?php
                 $resultadoTipoProducto->execute(array());
                 while($registro=$resultadoTipoProducto->fetch(PDO::FETCH_ASSOC)){
@@ -142,7 +142,7 @@ include("php/SQLIniciales.php");
           <tr>
             <td>Proveedor:</td>
             <td><select id="proveedor" name="proveedor">
-              <option value="0">-- Elige una Opción --</option>
+              <option value="">-- Elige una Opción --</option>
               <?php
               while($registro=$resultadoProveedor->fetch(PDO::FETCH_ASSOC)){
                 echo  "<option value='". $registro['idProveedor'] ."'>". $registro['nombreProveedor'] ."</option>";
