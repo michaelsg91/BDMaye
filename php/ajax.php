@@ -55,7 +55,7 @@ if(isset($_GET['propre'])){
 
 }
 
-//--- SECCION ACTUALIZAR -----------------------------------------------------------------------------------
+//--- SECCION ACTUALIZAR PRODUCTO   --------------------------------------------------------------------
 
 //--- RECIBIENDO ID PARA IDPROVEEDOR (ACTUALIZAR) --------------------------
 if(isset($_GET["idproveedor"])){
@@ -108,6 +108,76 @@ if(isset($_GET["idvalor"])){
     echo $registro["valorVenta"];
   }
 }
+//--- FIN SECCION ACTUALIZAR PRODUCTO -------------------------------------------
+
+
+//--- SECCION ACTUALIZAR CLIENTE   --------------------------------------------------------------------
+
+//--- RECIBIENDO ID PARA CEDULA --------------------------
+if(isset($_GET["cedula"])){
+  $cliente=$_GET["cedula"];
+  $sql="SELECT cedula FROM cliente WHERE idCliente=$cliente";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["cedula"];
+  }
+}
+
+//--- RECIBIENDO ID PARA NOMBRE CLIENTE--------------------------
+if(isset($_GET["nombre_cliente"])){
+  $cliente=$_GET["nombre_cliente"];
+  $sql="SELECT nombreCliente FROM cliente WHERE idCliente=$cliente";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["nombreCliente"];
+  }
+}
+
+//--- RECIBIENDO ID PARA TELEFONO --------------------------
+if(isset($_GET["telefono"])){
+  $cliente=$_GET["telefono"];
+  $sql="SELECT telefono FROM cliente WHERE idCliente=$cliente";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["telefono"];
+  }
+}
+
+//--- RECIBIENDO ID PARA DIRECCION --------------------------
+if(isset($_GET["direccion"])){
+  $cliente=$_GET["direccion"];
+  $sql="SELECT direccion FROM cliente WHERE idCliente=$cliente";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["direccion"];
+  }
+}
+
+//--- RECIBIENDO ID PARA MUNICIPIO --------------------------
+if(isset($_GET["municipio"])){
+  $cliente=$_GET["municipio"];
+  $sql="SELECT municipio FROM cliente WHERE idCliente=$cliente";
+
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array());
+
+  while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+    echo $registro["municipio"];
+  }
+}
+//--- FIN SECCION ACTUALIZAR CLIENTE -------------------------------------------
 
 
 

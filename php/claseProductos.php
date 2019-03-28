@@ -1,12 +1,12 @@
 <?php
-class personas_modelo{
+class Productos{
   private $db;
-  private $personas;
+  private $productos;
 
   public function __construct(){
     require_once("conexion.php");
     $this->db=conectar::conexion();
-    $this->personas=array();
+    $this->productos=array();
   }
 
   public function get_personas(){
@@ -15,17 +15,17 @@ class personas_modelo{
     $consulta=$this->db->query("SELECT idProducto,nombreProducto,valorVenta,nombreProveedor,nombreTipoProducto,cantidadVendida FROM producto,proveedor,tipoProducto WHERE producto.idProveedor=proveedor.idProveedor AND producto.idTipoProducto=tipoProducto.idTipoProducto");
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
-       $this->personas[]=$fila;
+       $this->productos[]=$fila;
     }
-    return $this->personas;
+    return $this->productos;
 
   }
 
 }
 
-$persona=new personas_modelo();
+$producto=new Productos();
 
-$matriz_personas=$persona->get_personas();
+$matriz_productos=$producto->get_personas();
 
 
 

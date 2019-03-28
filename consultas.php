@@ -31,26 +31,26 @@
 
       if($producto!=0){
         $soloProducto=new ventas();
-        $matriz_personas=$soloProducto->get_soloProducto($producto,$fechaInicial,$fechaFinal);
+        $matriz_ventas=$soloProducto->get_soloProducto($producto,$fechaInicial,$fechaFinal);
 
       }else if($tipoProducto!=0){
         $soloTipoProducto=new ventas();
-        $matriz_personas=$soloTipoProducto->get_soloTipoProducto($tipoProducto,$fechaInicial,$fechaFinal);
+        $matriz_ventas=$soloTipoProducto->get_soloTipoProducto($tipoProducto,$fechaInicial,$fechaFinal);
 
       }else if($proveedor!=0){
         $soloProveedor=new ventas();
-        $matriz_personas=$soloProveedor->get_soloProveedor($proveedor,$fechaInicial,$fechaFinal);
+        $matriz_ventas=$soloProveedor->get_soloProveedor($proveedor,$fechaInicial,$fechaFinal);
       }else if($cliente!=0){
         $soloCliente=new ventas();
-        $matriz_personas=$soloCliente->get_soloCliente($cliente,$fechaInicial,$fechaFinal);
+        $matriz_ventas=$soloCliente->get_soloCliente($cliente,$fechaInicial,$fechaFinal);
       }else if($fechaInicial!="" && $fechaFinal!=""){
         $soloFecha=new ventas();
-        $matriz_personas=$soloFecha->get_soloFecha($fechaInicial,$fechaFinal);
+        $matriz_ventas=$soloFecha->get_soloFecha($fechaInicial,$fechaFinal);
 
       }else{
 
           $todasVentas=new ventas();
-          $matriz_personas=$todasVentas->get_ventas();
+          $matriz_ventas=$todasVentas->get_ventas();
 
       }
 
@@ -62,7 +62,7 @@
 
 }else{
   $todasVentas=new ventas();
-  $matriz_personas=$todasVentas->get_ventas();
+  $matriz_ventas=$todasVentas->get_ventas();
 
 }
 
@@ -167,7 +167,7 @@
 
 		<?php
     $sumaVentas=0;
-    foreach ($matriz_personas as $persona):
+    foreach ($matriz_ventas as $persona):
     	?>
 
 

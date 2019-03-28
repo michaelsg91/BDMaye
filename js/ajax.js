@@ -68,6 +68,28 @@ $("#form_actualizar #buscar").click(function(){
 });
 
 
+//--- FUNCIONES PARA BUSCAR CLIENTE ------------------------------
+$("#form_actualizar_cliente #buscar").click(function(){
+  var id=$("#form_actualizar_cliente #id").val();
+  $.get("php/ajax.php",{cedula:id}).done(function(data){
+    $("#form_actualizar_cliente #cedula").val(data);
+  });
+  $.get("php/ajax.php",{nombre_cliente:id}).done(function(data){
+    $("#form_actualizar_cliente #nombre").val(data);
+  });
+  $.get("php/ajax.php",{telefono:id}).done(function(data){
+    $("#form_actualizar_cliente #telefono").val(data);
+  });
+  $.get("php/ajax.php",{direccion:id}).done(function(data){
+    $("#form_actualizar_cliente #direccion").val(data);
+  });
+  $.get("php/ajax.php",{municipio:id}).done(function(data){
+    $("#form_actualizar_cliente #municipio").val(data);
+  });
+
+});
+
+
 
 
 

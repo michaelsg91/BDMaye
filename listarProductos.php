@@ -8,7 +8,7 @@
   <body>
     <h1>PRODUCTOS</h1>
 <?php
-    require_once("php/procesoListar.php");
+    require_once("php/claseProductos.php");
 
 ?>
 
@@ -25,17 +25,17 @@
     </tr>
 
 		<?php
-    foreach ($matriz_personas as $persona):
+    foreach ($matriz_productos as $producto):
     	?>
 
 
    	<tr>
-      <td><?php echo $persona["idProducto"]?></td>
-      <td><?php echo $persona["nombreProducto"]?></td>
-      <td><?php echo $persona["valorVenta"]?></td>
-      <td><?php echo $persona["nombreProveedor"]?></td>
-      <td><?php echo $persona["nombreTipoProducto"]?></td>
-      <td><?php echo $persona["cantidadVendida"]?></td>
+      <td><?php echo $producto["idProducto"]?></td>
+      <td><?php echo $producto["nombreProducto"]?></td>
+      <td><?php echo $producto["valorVenta"]?></td>
+      <td><?php echo $producto["nombreProveedor"]?></td>
+      <td><?php echo $producto["nombreTipoProducto"]?></td>
+      <td><?php echo $producto["cantidadVendida"]?></td>
 
 
     </tr>

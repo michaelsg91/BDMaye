@@ -3,12 +3,12 @@
 
 class ventas{
   private $db;
-  private $personas;
+  private $ventas;
 
   public function __construct(){
     require_once("conexion.php");
     $this->db=conectar::conexion();
-    $this->personas=array();
+    $this->ventas=array();
   }
 
   public function get_ventas(){
@@ -18,9 +18,9 @@ class ventas{
       AND ventas.idCliente=cliente.idCliente AND producto.idProveedor=proveedor.idProveedor ORDER BY ventas.idVenta DESC");
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
-       $this->personas[]=$fila;
+       $this->ventas[]=$fila;
     }
-    return $this->personas;
+    return $this->ventas;
 
   }
 
@@ -33,9 +33,9 @@ class ventas{
       AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
-     $this->personas[]=$fila;
+     $this->ventas[]=$fila;
     }
-    return $this->personas;
+    return $this->ventas;
 
   }
 
@@ -48,9 +48,9 @@ class ventas{
       AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
-       $this->personas[]=$fila;
+       $this->ventas[]=$fila;
     }
-    return $this->personas;
+    return $this->ventas;
 
   }
 
@@ -63,9 +63,9 @@ class ventas{
       AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
-       $this->personas[]=$fila;
+       $this->ventas[]=$fila;
     }
-    return $this->personas;
+    return $this->ventas;
 
   }
 
@@ -78,9 +78,9 @@ class ventas{
       AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
     while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
-    $this->personas[]=$fila;
+    $this->ventas[]=$fila;
     }
-    return $this->personas;
+    return $this->ventas;
 
   }
 
@@ -93,9 +93,9 @@ class ventas{
         AND fechaVenta BETWEEN '". $fechaInicial  ."' AND '" . $fechaFinal . "' ORDER BY ventas.idVenta DESC" );
 
       while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
-       $this->personas[]=$fila;
+       $this->ventas[]=$fila;
       }
-      return $this->personas;
+      return $this->ventas;
 
     }
 

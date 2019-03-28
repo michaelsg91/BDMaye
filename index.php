@@ -32,8 +32,13 @@ include("php/SQLIniciales.php");
     <li><a id="li_ventas">Ingresar Venta</a></li>
 	  <li><a id="li_productos">Ingresar Producto</a></li>
     <li><a id="li_clientes">Ingresar Cliente</a></li>
-    <li><a id="li_actualizar">Actualizar Producto</a></li>
-    <li><a id="li_consultas" href="consultas.php" target="_blank">Consultar Ventas</a></li>
+    <li><a id="li_actualizar_productos">Actualizar Producto</a></li>
+    <li><a id="li_actualizar_clientes">Actualizar Cliente</a></li>
+    <li><a id="li_consulta_ventas" href="consultas.php" target="_blank">Consultar Ventas</a></li>
+    <li><a id="li_consulta_productos" href="listarProductos.php" target="_blank">Consultar Productos</a></li>
+    <li><a id="li_consulta_clientes" href="listarClientes.php" target="_blank">Consultar Clientes</a></li>
+
+
 	  <li><a href="login.php?salir">Deslogear</a></li>
   </ul>
   </div>
@@ -107,15 +112,6 @@ include("php/SQLIniciales.php");
     <h2>Registrar Producto</h2>
       <form id="form_producto" action="php/registroProducto.php" method="post">
         <table>
-          <!--  BOTON PARA LISTAR PRODUCTOS -->
-          <tr>
-              <td colspan="2" align="right">
-                <a href="listarProductos.php" target="_blank">
-                <input type="button" name="button" value="Listar Productos"></button>
-                </a>
-              </td>
-          </tr>
-
           <!--  CAJA PARA EL NOMBRE -->
           <tr>
             <td>Nombre: </td>
@@ -198,8 +194,8 @@ include("php/SQLIniciales.php");
 </article>
 <!---------------------------------------------------------------------------------------------------->
 
-<!--- CONTENIDO PARA ACTUALIZAR ---------------------------------------------------------------------------->
-<article class="art_actualizar">
+<!--- CONTENIDO PARA ACTUALIZAR PRODUCTOS  ---------------------------------------------------------------->
+<article class="art_actualizar_productos">
     <h2>ACTUALIZAR PRODUCTO</h2>
     <form id="form_actualizar" action="php/actualizarProducto.php" method="post">
       <table>
@@ -264,6 +260,53 @@ include("php/SQLIniciales.php");
   </article>
 <!----------------------------------------------------------------------------------------------------------------->
 
+
+
+<!--- SECCION PARA ACTUALIZAR CLIENTES ---------------------------------------------------------------------------->
+<article class="art_actualizar_clientes">
+  <h2>Actualizar Cliente</h2>
+    <form id="form_actualizar_cliente" action="php/actualizarCliente.php" method="post">
+      <table>
+        <tr>
+          <td>ID: </td>
+          <td><input type="number" name="id" id="id"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="button" id="buscar" name="buscar" value="Buscar"></td>
+        </tr>
+
+        <tr>
+          <td>Cédula:</td>
+          <td><input type="text" name="cedula" id="cedula"></td>
+        </tr>
+        <tr>
+          <td>Nombre:</td>
+          <td><input type="text" name="nombre" id="nombre"></td>
+        </tr>
+        <tr>
+          <td>Teléfono:</td>
+          <td><input type="text" name="telefono" id="telefono"></td>
+        </tr>
+        <tr>
+          <td>Dirección:</td>
+          <td><input type="text" name="direccion" id="direccion"></td>
+        </tr>
+        <tr>
+          <td>Municipio:</td>
+          <td><input type="text" name="municipio" id="municipio"></td>
+
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><input type="submit" name="enviar" value="Actualizar"></td>
+        </tr>
+      </table>
+    </form>
+
+</article>
+<!---------------------------------------------------------------------------------------------------->
+
+
 <article>
 <p align="center" id="aviso">
 
@@ -284,7 +327,7 @@ echo "No ha sido posible actualizar el registro. <br>Verifique los datos ingresa
 </p>
 
 </article>
-  <p id="pie">2017. Universidad Cooperativa de Colombia</p>
+  <p id="pie">2019. GMAS</p>
 </section>
 
 </body>
