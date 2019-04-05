@@ -22,8 +22,7 @@ include("php/SQLIniciales.php");
   ?>
   <div id="banner"><img src="css/img/banner_index.jpg" alt="Banner Compra Venta" name="logo" width="1280" height="180" id="logo"/>
     <ul>
-      <li class="separador"><?php echo  date("d-m-Y") ?></li>
-      <li><?php echo $usuario ?></li></ul>
+      <?php echo  date("d-m-Y") ?></ul>
   </div>
 
 
